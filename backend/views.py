@@ -1,6 +1,44 @@
-from django.shortcuts import render
+import json
+from .models import AadharData
+from .serializers import AadharDataSerializer
+from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 
 # Create your views here.
-def index(request):
-  
-  return render(request, 'codefundo/index.html')
+class AuthAPI(APIView):
+
+	def get_object(self, mobile_num):
+		try:
+			return AadharData.objects.get(mobile_num=mobile_num)
+		except AadharData.DoesNotExist:
+			return None
+
+	def post(self, request):
+
+		user = self.get_object(request.data['mobile_num'])
+		if user is None:
+			return Response(status=status.HTTP_404_NOT_FOUND)
+
+		serialized_user = json.dumps({'id': user.id})
+		return Response(serialized_user, status=status.HTTP_200_OK)
+
+
+class AadharDataAPI(APIView):
+
+	def get_object(self, pk):
+		try:
+			return AadharData.objects.get(pk=pk)
+		except AadharData.DoesNotExist:
+			return None
+
+	def get(self, request):
+
+		user = self.get_object(request.query_params['id'])
+		if user is None:
+			return Response(status=status.HTTP_404_NOT_FOUND)
+
+		serialized_user = AadharDataSerializer(user)
+		return Response(serialized_user, status=status.HTTP_200_OK)

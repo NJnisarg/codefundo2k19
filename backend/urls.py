@@ -1,12 +1,9 @@
-
-from django.conf.urls import url
-from backend import views
+from django.urls import path
+from .views import AuthAPI, AadharDataAPI
 app_name = "backend"
 
 
-
 urlpatterns = [
-    #url(r'^$', views.front_page, name='front_page'),
-
-     url(r'', views.index, name='home')
+     path('backend/auth/', AuthAPI.as_view()),
+     path('backend/aadharData/', AadharDataAPI.as_view()),
 ]    
