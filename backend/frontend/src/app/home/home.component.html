@@ -17,8 +17,19 @@
 
                         
                        
-                        <button class="button is-block is-info is-large is-fullwidth">Login</button>
-               
+                        <!-- <button class="button is-block is-info is-large is-fullwidth">Login</button> -->
+                        
+                        <a class="button heading is-outlined is-primary" [swal]="{
+                          title: 'Keep Your Fingers at Your Phone',
+                          text: 'open Your E-Vote App and keep your fingers at your phone similar to when you unlock your phone?',
+                          type: 'info',
+                          showCancelButton: 'true',
+                          focusCancel: 'true',
+                          confirmButtonText: 'Done, log me in',
+                          cancelButtonText: 'Wait!'
+                          }" (confirm)="saveScript()">
+                          LOG IN
+                        </a>
                 </div>
               
             </div>
