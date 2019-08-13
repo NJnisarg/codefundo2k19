@@ -1,18 +1,17 @@
 import json
-from .models import AadharData
-from .serializers import AadharDataSerializer
+from .models import Election, Constituency, AadharDetail, ElectionConstituency, Party, PartyCandidate
+from .serializers import ElectionSerializer, ConstituencySerializer, AadharDetailSerializer, ElectionConstituencySerializer, PartySerializer, PartyCandidateSerializer
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
 
 # Create your views here.
 class AuthAPI(APIView):
 
 	def get_object(self, mobile_num):
 		try:
-			return AadharData.objects.get(mobile_num=mobile_num)
+			return AadharDetail.objects.get(mobile_num=mobile_num)
 		except AadharData.DoesNotExist:
 			return None
 
@@ -26,7 +25,7 @@ class AuthAPI(APIView):
 		return Response(serialized_user, status=status.HTTP_200_OK)
 
 
-class AadharDataAPI(APIView):
+""" class AadharDataAPI(APIView):
 
 	def get_object(self, pk):
 		try:
@@ -41,4 +40,4 @@ class AadharDataAPI(APIView):
 			return Response(status=status.HTTP_404_NOT_FOUND)
 
 		serialized_user = AadharDataSerializer(user)
-		return Response(serialized_user, status=status.HTTP_200_OK)
+		return Response(serialized_user, status=status.HTTP_200_OK) """
