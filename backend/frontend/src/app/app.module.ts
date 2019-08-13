@@ -8,8 +8,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ElectionsComponent } from './elections/elections.component';
 import { ElectionCardComponent } from './elections/election-card/election-card.component';
+import { NgxUiLoaderModule } from  'ngx-ui-loader';
+import { HttpClientModule } from '@angular/common/http';
 
-@NgModule({
+
+  @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
@@ -20,7 +23,9 @@ import { ElectionCardComponent } from './elections/election-card/election-card.c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    NgxUiLoaderModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
