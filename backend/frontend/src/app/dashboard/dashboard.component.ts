@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-var dfewg = {
-  name:" ",
-  mobNo:" "
+var aadhar = {
+  name:"manan",
+  gender:"male",
+  pincode:"484001",
+  address:"NITK Surathkal",
+  age:"20",
+  aadhar_no:"873132120"
 }
 
 @Component({
@@ -12,10 +16,11 @@ var dfewg = {
 })
 
 export class DashboardComponent implements OnInit {
-
+  public aadhar:any;
   constructor() { }
 
   ngOnInit() {
+  this.aadhar=aadhar;
   }
 
 }
