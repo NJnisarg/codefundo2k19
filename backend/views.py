@@ -102,7 +102,14 @@ class GetPastElectionAPI(APIView):
         return Response(serialized_past_election.data, status=status.HTTP_200_OK)
 
 
-""" class GetAllCandidateByElectionAPI(APIView):
+class GetAllCandidateByElectionAPI(APIView):
 
     def get(self, request):
-        all_candidates = PartyCandidate.objects.filer(request.query_params['election_id']) """
+        all_candidates = PartyCandidate.objects.filter(election_id = request.query_params['election_id'])
+        aadhar_candidate = []
+        for candidate in all_candidates:
+            people = AadharDetail.objects.get(pk=candidate.aadhar_detail_id.id)
+            aadhar_candidate.append(people)
+
+        serialized_aadhar_candidate = AadharDetailSerializer(aadhar_candidate, many=True)
+        return Response(serialized_aadhar_candidate.data, status=status.HTTP_200_OK)
