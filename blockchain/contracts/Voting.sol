@@ -7,24 +7,21 @@ contract Voting {
     mapping (address => uint) candidateVoteCount;
     mapping (address => uint) voterVoteCount;
 
-    function addVoter(address _voterAddress) returns (bool){
+    function addVoter(address _voterAddress) public returns (bool){
         voterAddresses.push(_voterAddress);
         voterVoteCount[_voterAddress] = 0;
         return true;
     }
 
-    function addCandidate(address _candidateAddress) returns (bool) {
+    function addCandidate(address _candidateAddress) public returns (bool) {
         candidateAddresses.push(_candidateAddress);
         candidateVoteCount[_candidateAddress] = 0;
         return true;
     }
 
-    function vote(address _candidateAddress) returns (bool) {
+    function vote(address _candidateAddress) public returns (bool) {
 
-        if(voterHashAddressList[hash]!=msg.sender)
-            return false;
-
-        else if(voterVoteCount[msg.sender] != 0)
+        if(voterVoteCount[msg.sender] != 0)
             return false;
         else{
             voterVoteCount[msg.sender]++;
@@ -33,7 +30,7 @@ contract Voting {
         }
     }
 
-    function reset()
+    function reset() public
     {
         for(uint i=0;i<voterAddresses.length; i++)
         {
@@ -46,7 +43,7 @@ contract Voting {
         }
     }
 
-    function getVoteCount(address _candidateAddress) view returns (uint) {
+    function getVoteCount(address _candidateAddress) public view returns (uint) {
         return candidateVoteCount[_candidateAddress];
     }
 }
