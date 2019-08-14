@@ -13,7 +13,7 @@ class AuthAPI(APIView):
 	def get_object(self, mobile_num):
 		try:
 			return AadharDetail.objects.get(mobile_num=mobile_num)
-		except AadharData.DoesNotExist:
+		except AadharDetail.DoesNotExist:
 			return None
 
 	def post(self, request):
@@ -22,7 +22,7 @@ class AuthAPI(APIView):
 			return Response(status=status.HTTP_404_NOT_FOUND)
 
 		serialized_user = json.dumps({'id': user.id})
-		return Response(serialized_user, status=status.HTTP_200_OK)
+		return Response(serialized_user.data, status=status.HTTP_200_OK)
 
 
 class GetAadharAPI(APIView):
@@ -39,16 +39,16 @@ class GetAadharAPI(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serialized_user = AadharDetailSerializer(user)
-        return Response(serialized_user, status=status.HTTP_200_OK)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
 
 
-class GetAllUpComingElectionAPI(APIView):
+class GetAllUpcomingElectionAPI(APIView):
 
     def get(self, request):
         all_upcoming_elections = Election.objects.filter(start_date__gte=date.today())
 
-        serialized_all_upcoming_elections = ElectionSerializer(all_upcoming_elections)
-        return Response(serialized_all_upcoming_elections, status=status.HTTP_200_OK)
+        serialized_all_upcoming_elections = ElectionSerializer(all_upcoming_elections, many=True)
+        return Response(serialized_all_upcoming_elections.data, status=status.HTTP_200_OK)
 
 
 class GetUpcomingElectionAPI(APIView):
@@ -65,7 +65,7 @@ class GetUpcomingElectionAPI(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serialized_upcoming_election = ElectionSerializer(upcoming_election)
-        return Response(serialized_upcoming_election, status=status.HTTP_200_OK)
+        return Response(serialized_upcoming_election.data, status=status.HTTP_200_OK)
 
 
 class GetAllPastElectionAPI(APIView):
@@ -73,8 +73,8 @@ class GetAllPastElectionAPI(APIView):
     def get(self, request):
         all_past_elections = Election.objects.filter(end_date__lte=date.today())
 
-        serialized_all_past_elections = ElectionSerializer(all_past_elections)
-        return Response(serialized_all_past_elections, status=status.HTTP_200_OK)
+        serialized_all_past_elections = ElectionSerializer(all_past_elections, many=True)
+        return Response(serialized_all_past_elections.data, status=status.HTTP_200_OK)
 
 
 class GetPastElectionAPI(APIView):
@@ -91,12 +91,10 @@ class GetPastElectionAPI(APIView):
             return Response(status=HTTP_404_NOT_FOUND)
 
         serialized_past_election = ElectionSerializer(past_election)
-        return Response(serialized_past_election, status=status.HTTP_200_OK)
+        return Response(serialized_past_election.data, status=status.HTTP_200_OK)
 
 
-class GetAllCandidateByElectionAPI(APIView):
+""" class GetAllCandidateByElectionAPI(APIView):
 
     def get(self, request):
-        all_candidates = PartyCandidate.objects.filer(request.query_params['election_id'])
-
-        
+        all_candidates = PartyCandidate.objects.filer(request.query_params['election_id']) """

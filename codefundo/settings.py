@@ -39,8 +39,7 @@ INSTALLED_APPS = [
 	# Our apps
 	'backend.apps.BackendConfig',
 	# External applications
-	'rest_framework'
-
+	'rest_framework',
 ]
 
 MIDDLEWARE = [
