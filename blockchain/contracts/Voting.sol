@@ -1,4 +1,5 @@
-pragma solidity >=0.4.21 <0.6.0;
+// pragma solidity >=0.4.21 <0.6.0;
+pragma experimental ABIEncoderV2;
 
 contract Voting {
 
@@ -17,6 +18,14 @@ contract Voting {
         candidateHash.push(_candidateHash);
         candidateVoteCount[_candidateHash] = 0;
         return true;
+    }
+
+    function getVoters() public view returns (string[] memory) {
+        return voterHash;
+    }
+
+    function getCandidates() public view returns (string[] memory) {
+        return candidateHash;
     }
 
     function vote(string memory _candidateHash, string memory _voterHash) public returns (bool) {
