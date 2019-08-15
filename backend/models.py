@@ -31,9 +31,10 @@ class AadharDetail(models.Model):
     address = models.TextField(max_length=255)
     pincode = models.CharField(max_length=20)
     constituency_id = models.ForeignKey(Constituency, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='images/', null=True)
 
     def __str__(self):
-        return self.name
+        return self.name + " " + self.constituency_id.name
 
 class ElectionConstituency(models.Model):
     id = models.IntegerField(primary_key=True)

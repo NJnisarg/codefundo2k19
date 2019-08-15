@@ -113,11 +113,44 @@ class GetAllCandidateByElectionAPI(APIView):
         serialized_aadhar_candidate = AadharDetailSerializer(aadhar_candidate, many=True)
         return Response(serialized_aadhar_candidate.data, status=status.HTTP_200_OK)
 
+    #def post(self, request):
+    #    all_candidates = PartyCandidate.objects.filter(election_id=request.data['election_id'])
+    #    aadhar_candidate = []
+    #    for candidate in all_candidates:
+    #        people = AadharDetail.objects.get(pk=candidate.aadhar_detail_id.id)
+    #        aadhar_candidate.append(people)
+    #    serialized_aadhar_candidate = AadharDetailSerializer(aadhar_candidate, many=True)
+    #    return Response(serialized_aadhar_candidate.data, status=status.HTTP_200_OK)
+
     def post(self, request):
-        all_candidates = PartyCandidate.objects.filter(election_id=request.data['election_id'])
-        aadhar_candidate = []
-        for candidate in all_candidates:
-            people = AadharDetail.objects.get(pk=candidate.aadhar_detail_id.id)
-            aadhar_candidate.append(people)
-        serialized_aadhar_candidate = AadharDetailSerializer(aadhar_candidate, many=True)
-        return Response(serialized_aadhar_candidate.data, status=status.HTTP_200_OK)
+        election_dict = []
+        election_id = request.data['election_id']
+        election_constituency = ElectionConstituency.objects.filter(election_id=election_id)
+
+        for i,ec in enumerate(election_constituency):
+            election_dict.append(dict())
+            election_dict[i]['name'] = ec.constituency_id.name
+            election_dict[i]['candidates'] = []
+
+            party_candidate = PartyCandidate.objects.filter(constituency_id=ec.constituency_id.id).filter(election_id=ec.election_id.id)
+
+            for j,pc in enumerate(party_candidate):
+                election_dict[i]['candidates'].append(AadharDetailSerializer(AadharDetail.objects.get(id=pc.aadhar_detail_id.id)).data)
+                election_dict[i]['candidates'][j]['party'] = pc.party_id.name
+
+        return Response(election_dict, status=status.HTTP_200_OK)
+
+
+class GetAllContestingCandidatesOfUserConstituency(APIView):
+
+    def post(self, request):
+        user = AadharDetail.objects.get(pk=request.data['user_id'])
+        party_candidate = PartyCandidate.objects.filter(constituency_id=user.constituency_id.id).filter(election_id=request.data['election_id'])
+
+        candidates = []
+        for i,pc in enumerate(party_candidate):
+            candidates.append(AadharDetailSerializer(AadharDetail.objects.get(id=pc.aadhar_detail_id.id)).data)
+            candidates[i]['party'] = pc.party_id.name
+            candidates[i]['party_symbol'] = pc.party_id.image_symbol.url
+
+        return Response(candidates, status=status.HTTP_200_OK)
