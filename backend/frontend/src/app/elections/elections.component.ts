@@ -1,17 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ElectionsDetailService } from '../_service/elections-detail.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
-var elections=[
-  {
-    name:"national",
-    date:"24/26/2019",
-    description:"hello everyone, this is national elections!"
-  },
-  {
-    name:"state",
-    date:"3/2/2019",
-    description:"hello everyone, this is state elections!"
-  }
-];
 
 
 @Component({
@@ -22,14 +12,47 @@ var elections=[
 
 export class ElectionsComponent implements OnInit {
   public elections;
-  constructor() { }
+  public userId;
+  public upcomingOrpast;
+  constructor(public electionsService:ElectionsDetailService,private route: ActivatedRoute) { }
 
+  public getUpcomingElections(){
+    this.electionsService.getUpComingElections(this.userId).subscribe(
+      res=>{
+        console.log(res);
+        this.elections = res;
+      }
+    )
+  }
+
+  public getPastElections(){
+    this.electionsService.getPastElections(this.userId).subscribe(
+      res=>{
+        console.log(res);
+        this.elections = res;
+      }
+    )
+  }
 
   public onSelectElectionId(ElectionId){
     console.log(ElectionId);
   }
   ngOnInit() {
-    this.elections = elections;
+    this.route.params.subscribe(params => {
+      this.upcomingOrpast = params['str'];
+    });
+
+    this.userId = localStorage.getItem("userId");
+
+    if(this.upcomingOrpast=='upcoming'){
+      this.getUpcomingElections();
+      console.log("upcoming");
+    }
+    else{
+      this.getPastElections();
+    }
+    
+    
   }
 
 }
