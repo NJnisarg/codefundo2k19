@@ -29,11 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-      
-      
-      setTimeout(()=>{   
-        this.ngxLoader.stop();
-      }, 3);
+    
 
   }
   
