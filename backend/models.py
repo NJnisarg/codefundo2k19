@@ -39,8 +39,8 @@ class ElectionConstituency(models.Model):
     election_id = models.ForeignKey(Election, on_delete=models.CASCADE)
     constituency_id = models.ForeignKey(Constituency, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.election_id}, {self.constituency_id}'
+    # def __str__(self):
+    #     return f'{self.election_id}, {self.constituency_id}'
 
 class Party(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -56,5 +56,5 @@ class PartyCandidate(models.Model):
     election_id = models.ForeignKey(Election, on_delete=models.CASCADE)
     constituency_id = models.ForeignKey(Constituency, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.party_id}, {self.aadhar_detail_id}, {self.election_id}, {self.constituency_id}'
+    # def __str__(self):
+    #     return f'{self.party_id}, {self.aadhar_detail_id}, {self.election_id}, {self.constituency_id}'

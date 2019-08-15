@@ -3,3 +3,6 @@ node_modules
 .idea/
 .venv/
 __pycache__
+./codefundo/__pycache__/
+./backend/__pycache__/
+db.sqlite3

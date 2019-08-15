@@ -12,7 +12,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dashboard',
+    path: 'dashboard/:id',
     component: DashboardComponent,
     data: {
       title: 'dashboard'

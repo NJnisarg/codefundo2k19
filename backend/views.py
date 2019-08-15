@@ -33,13 +33,14 @@ class GetAadharAPI(APIView):
         except AadharDetail.DoesNotExist:
             return None
 
-    def get(self, request):
-        user = self.get_object(request.query_params['id'])
-        if user is None:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+    # def get(self, request):
+    #     print("madsf")
+    #     user = self.get_object(request.query_params['id'])
+    #     if user is None:
+    #         return Response(status=status.HTTP_404_NOT_FOUND)
 
-        serialized_user = AadharDetailSerializer(user)
-        return Response(serialized_user.data, status=status.HTTP_200_OK)
+    #     serialized_user = AadharDetailSerializer(user)
+    #     return Response(serialized_user.data, status=status.HTTP_200_OK)
 
     def post(self, request):
         user = self.get_object(request.data['id'])
@@ -57,6 +58,22 @@ class GetAllUpcomingElectionAPI(APIView):
 
         serialized_all_upcoming_elections = ElectionSerializer(all_upcoming_elections, many=True)
         return Response(serialized_all_upcoming_elections.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        user = AadharDetail.objects.get(pk=request.data['id'])
+        election_constituency = ElectionConstituency.objects.filter(constituency_id=user.constituency_id)
+        elections = []
+        for e_c in election_constituency:
+            election = Election.objects.get(pk=e_c.election_id.id)
+            elections.append(election)
+
+        new_elections = []
+        for e in elections:
+            if e.start_date > date.today():
+                new_elections.append(e)
+
+        serialized_elections = ElectionSerializer(new_elections, many=True)
+        return Response(serialized_elections.data, status=status.HTTP_200_OK)
 
 
 class GetUpcomingElectionAPI(APIView):
@@ -83,6 +100,22 @@ class GetAllPastElectionAPI(APIView):
 
         serialized_all_past_elections = ElectionSerializer(all_past_elections, many=True)
         return Response(serialized_all_past_elections.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+            user = AadharDetail.objects.get(pk=request.data['id'])
+            election_constituency = ElectionConstituency.objects.filter(constituency_id=user.constituency_id)
+            elections = []
+            for e_c in election_constituency:
+                election = Election.objects.get(pk=e_c.election_id.id)
+                elections.append(election)
+
+            new_elections = []
+            for e in elections:
+                if e.end_date < date.today():
+                    new_elections.append(e)
+
+            serialized_elections = ElectionSerializer(new_elections, many=True)
+            return Response(serialized_elections.data, status=status.HTTP_200_OK)
 
 
 class GetPastElectionAPI(APIView):
@@ -113,3 +146,13 @@ class GetAllCandidateByElectionAPI(APIView):
 
         serialized_aadhar_candidate = AadharDetailSerializer(aadhar_candidate, many=True)
         return Response(serialized_aadhar_candidate.data, status=status.HTTP_200_OK)
+
+    def get(self, request):
+            all_candidates = PartyCandidate.objects.filter(election_id = request.data['election_id'])
+            aadhar_candidate = []
+            for candidate in all_candidates:
+                people = AadharDetail.objects.get(pk=candidate.aadhar_detail_id.id)
+                aadhar_candidate.append(people)
+
+            serialized_aadhar_candidate = AadharDetailSerializer(aadhar_candidate, many=True)
+            return Response(serialized_aadhar_candidate.data, status=status.HTTP_200_OK)
