@@ -12,14 +12,14 @@ const routes: Routes = [
     }
   },
   {
-    path: 'dashboard/:id',
+    path: 'dashboard',
     component: DashboardComponent,
     data: {
       title: 'dashboard'
     }
   },
   {
-    path: 'elections',
+    path: 'elections/:str',
     component: ElectionsComponent,
     data: {
       title: 'elections'

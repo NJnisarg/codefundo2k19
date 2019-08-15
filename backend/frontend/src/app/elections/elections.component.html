@@ -1,5 +1,14 @@
 <div style="margin:5em">
+
+<div *ngIf="upcomingOrpast=='upcoming'">
 <div class="title has-margin-5"> Upcoming Election</div>
+</div>
+
+<div *ngIf="upcomingOrpast=='past'">
+<div class="title has-margin-5"> Past Election</div>
+</div>
+
+
 <ng-container *ngFor="let election of elections; let i = index">
   <app-election-card [election]="election" [index]="i" 
     (electionIdEmitter)="onSelectElectionId($event)"></app-election-card>

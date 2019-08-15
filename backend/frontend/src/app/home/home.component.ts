@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { AuthService } from '../_service/auth.service';
 import { stringify } from '@angular/compiler/src/util';
+// import { Web3 } from 'web3';
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,7 +14,7 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class HomeComponent implements OnInit {
   public mobNo:any;
-
+  public web3js;
   public userId;
   constructor(private ngxLoader: NgxUiLoaderService,public authService:AuthService,public router:Router) { }
 
@@ -23,14 +27,17 @@ export class HomeComponent implements OnInit {
       res=>{
         res = JSON.parse(stringify(res));
         this.userId = res["id"];
-        this.router.navigateByUrl("/dashboard/" +this.userId);
+        localStorage.setItem("userId", this.userId);
+        this.router.navigateByUrl("/dashboard");
       }
     )
   }
 
+  public startApp(){
+  
+  }
+  
   ngOnInit() {
-    
-
   }
   
 
