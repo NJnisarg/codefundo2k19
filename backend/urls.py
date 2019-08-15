@@ -11,4 +11,5 @@ urlpatterns = [
     path('getAllUpcomingElections/', GetAllUpcomingElectionAPI.as_view()),
     path('getAllPastElections/', GetAllPastElectionAPI.as_view()),
     path('getAllCandidateByElection/', GetAllCandidateByElectionAPI.as_view()),
+    path('getAllContestingCandidatesOfUserConstituency/', GetAllContestingCandidatesOfUserConstituency.as_view()),
 ]
