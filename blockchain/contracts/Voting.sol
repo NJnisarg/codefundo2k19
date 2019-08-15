@@ -2,48 +2,48 @@ pragma solidity >=0.4.21 <0.6.0;
 
 contract Voting {
 
-    address[] voterAddresses;
-    address[] candidateAddresses;
-    mapping (address => uint) candidateVoteCount;
-    mapping (address => uint) voterVoteCount;
+    string[] voterHash;
+    string[] candidateHash;
+    mapping (string => uint) candidateVoteCount;
+    mapping (string => uint) voterVoteCount;
 
-    function addVoter(address _voterAddress) public returns (bool){
-        voterAddresses.push(_voterAddress);
-        voterVoteCount[_voterAddress] = 0;
+    function addVoter(string memory _voterHash) public returns (bool){
+        voterHash.push(_voterHash);
+        voterVoteCount[_voterHash] = 0;
         return true;
     }
 
-    function addCandidate(address _candidateAddress) public returns (bool) {
-        candidateAddresses.push(_candidateAddress);
-        candidateVoteCount[_candidateAddress] = 0;
+    function addCandidate(string memory _candidateHash) public returns (bool) {
+        candidateHash.push(_candidateHash);
+        candidateVoteCount[_candidateHash] = 0;
         return true;
     }
 
-    function vote(address _candidateAddress) public returns (bool) {
+    function vote(string memory _candidateHash, string memory _voterHash) public returns (bool) {
 
-        if(voterVoteCount[msg.sender] != 0)
+        if(voterVoteCount[_voterHash] != 0)
             return false;
         else{
-            voterVoteCount[msg.sender]++;
-            candidateVoteCount[_candidateAddress]++;
+            voterVoteCount[_voterHash]++;
+            candidateVoteCount[_candidateHash]++;
             return true;
         }
     }
 
     function reset() public
     {
-        for(uint i=0;i<voterAddresses.length; i++)
+        for(uint i=0;i<voterHash.length; i++)
         {
-            voterVoteCount[voterAddresses[i]] = 0;
+            voterVoteCount[voterHash[i]] = 0;
         }
 
-        for(uint i=0;i<candidateAddresses.length; i++)
+        for(uint i=0;i<candidateHash.length; i++)
         {
-            candidateVoteCount[candidateAddresses[i]] = 0;
+            candidateVoteCount[candidateHash[i]] = 0;
         }
     }
 
-    function getVoteCount(address _candidateAddress) public view returns (uint) {
-        return candidateVoteCount[_candidateAddress];
+    function getVoteCount(string memory _candidateHash) public view returns (uint) {
+        return candidateVoteCount[_candidateHash];
     }
 }
