@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AadharService  } from '../_service/aadhar.service'
+import { stringify } from '@angular/compiler/src/util';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
-var aadhar = {
-  name:"manan",
-  gender:"male",
-  pincode:"484001",
-  address:"NITK Surathkal",
-  age:"20",
-  aadhar_no:"873132120"
-}
 
 @Component({
   selector: 'app-dashboard',
@@ -17,10 +13,26 @@ var aadhar = {
 
 export class DashboardComponent implements OnInit {
   public aadhar:any;
-  constructor() { }
+  public userId;
+  constructor(private route: ActivatedRoute,public aadharService:AadharService,private ngxLoader: NgxUiLoaderService) { }
+
+  public getAadharDetails(){
+    this.aadharService.getAadharDetails(this.userId).subscribe(
+      res=>{
+        this.aadhar = res;
+        console.log(this.aadhar);
+      }
+    )
+  }
 
   ngOnInit() {
-  this.aadhar=aadhar;
+    this.route.params.subscribe(params => {
+      this.userId = +params['id'];
+      console.log(this.userId);
+    });
+    this.ngxLoader.start();
+    this.getAadharDetails();
+    this.ngxLoader.stop();
   }
 
 }

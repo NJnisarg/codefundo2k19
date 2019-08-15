@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { AuthService } from '../_service/auth.service';
+import { stringify } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,20 +11,29 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class HomeComponent implements OnInit {
   public mobNo:any;
 
-
-  constructor(private ngxLoader: NgxUiLoaderService) { }
+  public userId;
+  constructor(private ngxLoader: NgxUiLoaderService,public authService:AuthService,public router:Router) { }
 
   public onEnterMobNo(event){
     this.mobNo = event.target.value;
-    console.log(this.mobNo);
+  };
+  
+  public getId(){
+    this.authService.getAuthenticated(this.mobNo).subscribe(
+      res=>{
+        res = JSON.parse(stringify(res));
+        this.userId = res["id"];
+        this.router.navigateByUrl("/dashboard/" +this.userId);
+      }
+    )
   }
 
   ngOnInit() {
-      this.ngxLoader.start();
-    
-    setTimeout(()=>{   
-      this.ngxLoader.stop();
-    }, 3000);
+      
+      
+      setTimeout(()=>{   
+        this.ngxLoader.stop();
+      }, 3);
 
   }
   
