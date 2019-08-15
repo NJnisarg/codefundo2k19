@@ -21,7 +21,7 @@
               
                       <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                          <input class="input is-medium" type="email" placeholder="Enter your mobile number" value="" name="email" autofocus="" required>
+                          <input class="input is-medium" type="email" placeholder="Enter your mobile number" (keyup)="onEnterMobNo($event)">
                           <span class="icon is-medium is-left">
                             <i class="fa fa-envelope"></i>
                           </span>
@@ -41,7 +41,7 @@
                                     focusCancel: 'true',
                                     confirmButtonText: 'Done, log me in',
                                     cancelButtonText: 'Wait!'
-                                    }" (confirm)="saveScript()">
+                                    }" (confirm)="getId()">
                                     LOG IN
                                   </a>
                         </p>

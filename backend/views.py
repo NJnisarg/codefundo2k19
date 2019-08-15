@@ -33,13 +33,14 @@ class GetAadharAPI(APIView):
         except AadharDetail.DoesNotExist:
             return None
 
-    def get(self, request):
-        user = self.get_object(request.query_params['id'])
-        if user is None:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+    # def get(self, request):
+    #     print("madsf")
+    #     user = self.get_object(request.query_params['id'])
+    #     if user is None:
+    #         return Response(status=status.HTTP_404_NOT_FOUND)
 
-        serialized_user = AadharDetailSerializer(user)
-        return Response(serialized_user.data, status=status.HTTP_200_OK)
+    #     serialized_user = AadharDetailSerializer(user)
+    #     return Response(serialized_user.data, status=status.HTTP_200_OK)
 
     def post(self, request):
         user = self.get_object(request.data['id'])
