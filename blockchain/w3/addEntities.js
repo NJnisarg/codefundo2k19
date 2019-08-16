@@ -1,17 +1,17 @@
 const Web3 = require('web3');
 const VotingContractArtifact = require('../build/contracts/Voting.json');
 
-const networkAddr = "ws://localhost:8545";
+const networkAddr = "http://ethdnxd24-dns-reg1.eastus.cloudapp.azure.com:8540";
 const contractABI = VotingContractArtifact["abi"];
-const contractAddress = VotingContractArtifact["networks"]["7"]["address"];
+const contractAddress = VotingContractArtifact["networks"]["10101010"]["address"];
 
 const web3 = new Web3(networkAddr);
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 
 const addVoter = async (hash) => {
-    const accounts = await web3.eth.getAccounts();
-    const defaultSender = accounts[0];
+    // const accounts = await web3.eth.getAccounts();
+    const defaultSender = '0x38D4010731de6dee73F15aF71c886AB0e49f5122';
 
     contract.methods.addVoter(hash).send({from: defaultSender})
         .then((result) => {
@@ -25,8 +25,8 @@ const addVoter = async (hash) => {
 };
 
 const addCandidate = async (hash) => {
-    const accounts = await web3.eth.getAccounts();
-    const defaultSender = accounts[0];
+    // const accounts = await web3.eth.getAccounts();
+    const defaultSender = '0x38D4010731de6dee73F15aF71c886AB0e49f5122';
 
     contract.methods.addCandidate(hash).send({from: defaultSender})
         .then((result) => {

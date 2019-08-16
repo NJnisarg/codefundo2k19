@@ -12,7 +12,7 @@ export class ElectionCardComponent implements OnInit {
   constructor() { }
 
   public EmitIndex(){
-    this.electionIdEmitter.emit(this.index);
+    this.electionIdEmitter.emit(this.election.id);
   }
 
   ngOnInit() {
