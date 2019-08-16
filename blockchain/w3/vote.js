@@ -3,7 +3,7 @@ const VotingContractArtifact = require('../build/contracts/Voting.json');
 
 const networkAddr = "ws://localhost:8545";
 const contractABI = VotingContractArtifact["abi"];
-const contractAddress = VotingContractArtifact["networks"]["7"]["address"];
+const contractAddress = VotingContractArtifact["networks"]["10101010"]["address"];
 
 const web3 = new Web3(networkAddr);
 const contract = new web3.eth.Contract(contractABI, contractAddress);
