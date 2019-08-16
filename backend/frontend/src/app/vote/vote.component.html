@@ -1,0 +1,12 @@
+<app-background></app-background>
+
+<div class="category-list events-listing row active azuki">
+  <div class="col s12 m4" *ngFor="let item of categories">
+    <a class="events-listing-item" href="projects#{{ item.hash }}">
+      <div class="image" [ngStyle]="{ 'background-image': 'url('+ domain + item.party_symbol + ')'}"></div>
+      <div class="title">{{ item.party }}</div>
+    </a>
+  </div>
+</div>
+
+
