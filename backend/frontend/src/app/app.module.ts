@@ -10,7 +10,8 @@ import { ElectionsComponent } from './elections/elections.component';
 import { ElectionCardComponent } from './elections/election-card/election-card.component';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
-import {VoteComponent } from './vote/vote.component';
+import { VoteComponent } from './vote/vote.component';
+import { ResultsComponent } from './results/results.component';
 import { BackgroundComponent } from './background/background.component';
   @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BackgroundComponent } from './background/background.component';
     ElectionsComponent,
     ElectionCardComponent,
     VoteComponent,
+    ResultsComponent,
     BackgroundComponent
   ],
   imports: [
