@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AadharService  } from '../_service/aadhar.service'
+import { AadharService  } from '../_service/aadhar.service';
 import { stringify } from '@angular/compiler/src/util';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
     this.ngxLoader.start();
     this.getAadharDetails();
     this.ngxLoader.stop();
-   
+
   }
 
 }
