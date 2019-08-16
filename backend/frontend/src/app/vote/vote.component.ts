@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { VoteService } from '../_service/vote.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../environments/environment'
-
-
+import { vote } from '../../../../../blockchain/w3/vote';
+// import { addVoter } from '../../../../../blockchain/w3/addEntities';
 const Candidates = require('../../assets/images.json');
 const c = Candidates.projects;
 const candidates = Candidates.categories;
@@ -19,7 +19,9 @@ export class VoteComponent implements OnInit {
   public userId;
   public electionId;
   public env = environment;
-  public domain = this.env['apiUrl']
+  public domain = this.env['apiUrl'];
+  public candidateId;
+  public voterId;
   constructor(public voteService:VoteService,public router:Router) { }
 
   public getPartyCandidates(){
@@ -30,6 +32,14 @@ export class VoteComponent implements OnInit {
       }
     )
   }
+
+  public vote(candidate){
+    this.candidateId = candidate.aadhar_num;
+    this.voterId = this.userId;
+    // let added = addVoter(this.voterId);
+    // console.log(added);
+  }
+
 
   ngOnInit() {
     this.userId = localStorage.getItem("userId");
