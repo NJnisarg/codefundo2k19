@@ -40,6 +40,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    /* background-image: url('http://localhost:8000/media/images/divya.png'); */
 }
 
 .events-listing .events-listing-item .icon *, .events-listing .events-listing-item .icon img {

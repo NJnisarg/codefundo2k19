@@ -14,7 +14,7 @@ export class ElectionsComponent implements OnInit {
   public elections;
   public userId;
   public upcomingOrpast;
-  constructor(public electionsService:ElectionsDetailService,private route: ActivatedRoute) { }
+  constructor(public electionsService:ElectionsDetailService,private route: ActivatedRoute,public router:Router) { }
 
   public getUpcomingElections(){
     this.electionsService.getUpComingElections(this.userId).subscribe(
@@ -35,8 +35,11 @@ export class ElectionsComponent implements OnInit {
   }
 
   public onSelectElectionId(ElectionId){
-    console.log(ElectionId);
+    localStorage.setItem("electionId",ElectionId);
+    this.router.navigateByUrl("/vote");
+
   }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.upcomingOrpast = params['str'];
