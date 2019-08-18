@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard.component'
 import { ElectionsComponent } from './elections/elections.component'
 import { VoteComponent } from './vote/vote.component';
 import { ResultsComponent } from './results/results.component';
+import { DecisionHelperComponent } from './decision-helper/decision-helper.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -39,6 +41,13 @@ const routes: Routes = [
     component: ResultsComponent,
     data: {
       title: 'elections'
+    }
+  },
+  {
+    path: 'decisionHelper',
+    component: DecisionHelperComponent,
+    data: {
+      title: 'decisionHelper'
     }
   }
 ];
