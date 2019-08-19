@@ -1,3 +1,5 @@
+<app-background></app-background>
+
 <div style="margin:5em">
 
 <div *ngIf="upcomingOrpast=='upcoming'">
@@ -8,42 +10,30 @@
 <div class="title has-margin-5"> Past Election</div>
 </div>
 
+<!-- <div class="title azuki" style="color:white;font-size: 3em">Every candidate of your constituency filed an RTI</div> -->
 
-<ng-container *ngFor="let election of elections; let i = index">
-  <app-election-card [election]="election" [index]="i" 
-    (electionIdEmitter)="onSelectElectionId($event)"></app-election-card>
-</ng-container>
-</div>
-
-<article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png">
-      </p>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-          <br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-        </p>
+<div class="columns">
+  <div class="column is-one-fourth">
+      <!-- <app-vote [decisionHelper]="'true'"></app-vote> -->
+      <div class="category-list events-listing row active azuki" style="width:50%">
+        <!-- <div  *ngFor="let item of categories"> -->
+          <a  (click)="vote(item)" class="events-listing-item" >
+            <div class="image" [ngStyle]="{ 'background-image': 'url('+ domain + item.party_symbol + ')'}"></div>
+            <div class="title">{{ item.party }}</div>
+          </a>
+        <!-- </div> -->
       </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fas fa-heart"></i></span>
-          </a>
-        </div>
-      </nav>
-    </div>
-    <div class="media-right">
-      <button class="delete"></button>
-    </div>
-  </article>
+  </div>
+  <div class="column">
+    <div style="margin-right:30em">
+      <div class="white-text">
+        <div>
+          
+           <div class="title azuki" style="color:white;font-size: 5em">hello</div>
+          <div class="azuki" style="color:white;font-size: 2em">asdfsaf</div><br>
+          <a class="mbtn white-text"  target="_blank" style="font-size:1.5em">View RTI Pdf</a><br><br><br>
+        </div>  
+      </div> 
+    </div>   
+  </div>
+</div>
