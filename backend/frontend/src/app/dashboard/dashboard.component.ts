@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
         this.userAadharNum = this.aadhar.aadhar_num;
         let rand = Math.floor(Math.random() * 10000000000000000);
         this.randNum = rand.toString();
-        localStorage.setItem("randNum",this.randNum);
+       
         this.userKey = this.userAadharNum.concat(rand);
         console.log("manan")
         console.log(this.userKey);
@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
         let hashAadhar = this.hashCode(this.userAadharNum);
         this.userKey = hashAadhar;
         this.addVoter(this.userKey);
+        localStorage.setItem("userKey",this.userKey);
         // console.log(this.userAadharNum.hashCode());
 
         this.ngxLoader.stop();
