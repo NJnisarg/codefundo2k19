@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AadharService  } from '../_service/aadhar.service';
 import { stringify } from '@angular/compiler/src/util';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-
+import {vote} from '../../../../../blockchain/w3/addEntities';
 
 @Component({
   selector: 'app-dashboard',
