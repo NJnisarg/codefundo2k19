@@ -47,7 +47,7 @@ dbconn.query('replace into backend_electionconstituency values (?,?,?)', [14,7,2
 
 //     Inserting into aadharDetail (id, name, phoneNumber, aadharNum, fingerprint, age, gender, address, pincode, imageUrl, constituency_id)
 for(let i=1;i<=30;i++)
-    dbconn.query('replace into backend_aadhardetail values (?,?,?,?,?,?,?,?,?,?,?)', [i, faker.name.findName(), faker.phone.phoneNumber(), faker.phone.phoneNumber().slice(1,-1), faker.random.uuid(), 20, 'M', faker.address.streetAddress(), faker.address.zipCode(), '' , i%10 + 1]);
+    dbconn.query('replace into backend_aadhardetail values (?,?,?,?,?,?,?,?,?,?,?)', [i, faker.name.findName(), faker.phone.phoneNumber(), faker.phone.phoneNumber().slice(1,-1), faker.random.uuid(), 20, 'M', faker.address.streetAddress(), faker.address.zipCode(), 'images/placeholder.jpg' , i%10 + 1]);
 
 //     Inserting into the partycandidate (id, aadhar_id, constituency_id, election_id, party_id)
 dbconn.query('replace into backend_partycandidate values(?,?,?,?,?)', [1,3,1,1,1]);
