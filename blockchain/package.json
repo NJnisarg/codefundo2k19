@@ -1,0 +1,23 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "seed_data.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "mysql": "^2.17.1",
+    "sqlite3": "^4.1.0",
+    "truffle-contract": "^4.0.28",
+    "truffle-hdwallet-provider": "^1.0.16",
+    "web3": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
