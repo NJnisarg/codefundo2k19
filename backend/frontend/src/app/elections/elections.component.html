@@ -3,7 +3,7 @@
 <div style="margin:5em">
 
 <div *ngIf="upcomingOrpast=='upcoming'">
-<div class="title has-margin-5"> Upcoming Election</div>
+<div class="title has-margin-5 azuki" style="font-size:5em; color:black"> Upcoming Election</div>
 </div>
 
 <div *ngIf="upcomingOrpast=='past'">
@@ -12,28 +12,18 @@
 
 <!-- <div class="title azuki" style="color:white;font-size: 3em">Every candidate of your constituency filed an RTI</div> -->
 
-<div class="columns">
-  <div class="column is-one-fourth">
-      <!-- <app-vote [decisionHelper]="'true'"></app-vote> -->
-      <div class="category-list events-listing row active azuki" style="width:50%">
-        <!-- <div  *ngFor="let item of categories"> -->
-          <a  (click)="vote(item)" class="events-listing-item" >
-            <div class="image" [ngStyle]="{ 'background-image': 'url('+ domain + item.party_symbol + ')'}"></div>
-            <div class="title">{{ item.party }}</div>
-          </a>
-        <!-- </div> -->
-      </div>
-  </div>
-  <div class="column">
-    <div style="margin-right:30em">
+<div style="margin-top:5em">
+
+ 
+    <div>
       <div class="white-text">
-        <div>
+        <div *ngFor="let election of elections">
           
-           <div class="title azuki" style="color:white;font-size: 5em">hello</div>
-          <div class="azuki" style="color:white;font-size: 2em">asdfsaf</div><br>
-          <a class="mbtn white-text"  target="_blank" style="font-size:1.5em">View RTI Pdf</a><br><br><br>
+           <div class="title azuki" style="color:black;font-size: 5em">{{election.name}}</div>
+          <div class="azuki" style="color:black;font-size: 2em">{{election.description}}</div><br>
+          <a class="mbtn white-text" style="background:black" (click)="onSelectElectionId(election.id)"  target="_blank" style="font-size:1.5em">parties available to vote</a><br><br><br>
         </div>  
       </div> 
     </div>   
-  </div>
+  
 </div>

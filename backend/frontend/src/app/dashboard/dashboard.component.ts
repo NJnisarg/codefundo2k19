@@ -27,9 +27,15 @@ export class DashboardComponent implements OnInit {
       )
   }
 
+  hashCode = function(s){
+    return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
+  }
+
   public getAadharDetails(){
+    this.ngxLoader.start();
     this.aadharService.getAadharDetails(this.userId).subscribe(
       res=>{
+        this.ngxLoader.start();
         this.aadhar = res;
         console.log(this.aadhar);
         this.userAadharNum = this.aadhar.aadhar_num;
@@ -39,17 +45,26 @@ export class DashboardComponent implements OnInit {
         this.userKey = this.userAadharNum.concat(rand);
         console.log("manan")
         console.log(this.userKey);
+
+        let hashAadhar = this.hashCode(this.userAadharNum);
+        this.userKey = hashAadhar;
         this.addVoter(this.userKey);
+        // console.log(this.userAadharNum.hashCode());
+
+        this.ngxLoader.stop();
+        
+     
       }
     )
   }
 
   ngOnInit() {
+    this.ngxLoader.start();
     this.userId = localStorage.getItem("userId");
     console.log(this.userId);
-    this.ngxLoader.start();
+    
     this.getAadharDetails();
-    this.ngxLoader.stop();
+    
 
   }
 

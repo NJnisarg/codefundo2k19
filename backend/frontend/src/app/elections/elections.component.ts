@@ -47,6 +47,7 @@ export class ElectionsComponent implements OnInit {
     this.electionsService.getUpComingElections(this.userId).subscribe(
       res=>{
         console.log(res);
+        console.log("upcoming here")
         this.elections = res;
       }
     )
