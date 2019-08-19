@@ -1,7 +1,9 @@
 const {addVoter, addCandidate} = require('./w3/addEntities');
 const {vote, getVoteCount,getCandidates, getVoters} = require('./w3/vote');
-
+const _ = require('underscore');
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const port = 3000;
 const cors = require('cors');
@@ -15,17 +17,45 @@ const cors = require('cors');
   
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 app.post('/addVoter',async (req, res) => {
     let voterHash = req.body.voterHash;
-    let result = await addVoter(voterHash);
+    let voterList = await getVoters();
+    let result = false;
+    if(!_.contains(voterList,voterHash))
+    {
+        try{
+            result = await addVoter(voterHash);
+            console.log(result);
+            result = true;
+        }catch(err){
+            result = false;
+        }
+    }
+    else
+        result = false;
+
     console.log(result);
     res.json({result});
 });
 app.post('/addCandidate',async (req, res) => {
     let candidateHash = req.body.candidateHash;
-    let result = await addCandidate(candidateHash);
+    let candidateList = await getCandidates();
+    let result = false;
+    if(!_.contains(candidateList, candidateHash))
+    {
+        try{
+            result = await addCandidate(candidateHash);
+            console.log(result);
+            result = true;
+        }catch(err){
+            result = false;
+        }
+    }
+    else
+        result = false;
+
     console.log(result);
     res.json({result});
 });
