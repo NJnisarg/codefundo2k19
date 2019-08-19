@@ -3,21 +3,15 @@ const cors = require('cors');
 const _ = require('underscore');
 const axios = require('axios');
 
-const {addVoter, addCandidate} = require('./w3/addEntities');
-const {vote, getVoteCount,getCandidates, getVoters} = require('./w3/vote');
+const { addVoter, addCandidate } = require('./w3/addEntities');
+const { vote, getVoteCount,getCandidates, getVoters, reset } = require('./w3/vote');
 
 const app = express();
 const port = 3000;
 
 
-//+913067720576
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
-  
+//  Use this mobile number for userId = 10 ==> Nikita Joshi. She is a part of the Vadodara constituency
+//  +913067720576
 
 app.use(express.json());
 app.use(cors());
@@ -42,6 +36,7 @@ app.post('/addVoter',async (req, res) => {
     console.log(result);
     res.json({result});
 });
+
 app.post('/addCandidate',async (req, res) => {
     let candidateHash = req.body.candidateHash;
     let candidateList = await getCandidates();
@@ -62,6 +57,7 @@ app.post('/addCandidate',async (req, res) => {
     console.log(result);
     res.json({result});
 });
+
 app.post('/vote',async (req, res) => {
     let voterHash = req.body.voterHash;
     let candidateHash = req.body.candidateHash;
@@ -69,6 +65,7 @@ app.post('/vote',async (req, res) => {
     console.log(result);
     res.json({result});
 });
+
 app.post('/getVoteCount',async (req, res) => {
 
     axios.post('http://localhost:8000/getAllContestingCandidatesOfUserConstituency/', req.body)
@@ -94,10 +91,6 @@ app.post('/getVoteCount',async (req, res) => {
             console.log(err);
             res.json(err);
         });
-
-    // let candidateHash = req.body.candidateHash;
-    // console.log(result);
-    // res.json({result});
 });
 
 app.post('/getVoters',async (req, res) => {
@@ -112,5 +105,11 @@ app.post('/getCandidates',async (req, res) => {
     res.json({result});
 });
 
+app.post('/reset', async (req, res) => {
+    let result = await reset();
+    console.log(result);
+    res.json({result});
+});
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+app.listen(port, () => console.log(`Blockchain App listening on port ${port}!`));
