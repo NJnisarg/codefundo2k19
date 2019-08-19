@@ -71,13 +71,15 @@ app.post('/getVoteCount',async (req, res) => {
     axios.post('http://localhost:8000/getAllContestingCandidatesOfUserConstituency/', req.body)
         .then((response) => {
             let result_array = [];
+            let count =0;
             response.data.map(async (obj, index) => {
                 try{
-                    obj.vote_count = await getVoteCount(obj.aadhar_num);
+                    obj.vote_count = parseInt(await getVoteCount(obj.aadhar_num));
                     console.log(obj);
                     result_array.push(obj);
-
-                    if(index===response.data.length-1)
+                    count++;
+                    let length = response.data.length;
+                    if(count===length)
                     {
                         res.json(result_array);
                     }
