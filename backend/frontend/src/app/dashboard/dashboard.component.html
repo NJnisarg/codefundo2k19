@@ -11,11 +11,11 @@
   </section>
   <div class="columns has-background-grey-lighter">
     <div class="column wd-left">
-      <section class="hero has-background-white">
+      <section class="hero has-background-white special">
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
-              Upcoming Elections
+              <a routerLink="/elections/upcoming">Upcoming Elections</a>
             </h1>
             <h2 class="subtitle">
               Glance all the upcoming election in your locality
@@ -25,11 +25,11 @@
       </section>
     </div>
     <div class="column wd-right">
-      <section class="hero has-background-white">
+      <section class="hero has-background-white special">
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
-              Past Elections
+              <a routerLink="/elections/past">Past Elections</a>
             </h1>
             <h2 class="subtitle">
               Glance results of all the past elections in your locality
@@ -39,40 +39,55 @@
       </section>
     </div>
   </div>
+
   <div class="tile is-ancestor has-background-grey-lighter">
-    <div class="tile is-8">
-      <div class="tile">
-        <div class="tile is-parent is-vertical wd-left">
-          <article class="tile is-child notification is-primary">
-            <p class="title">Vertical...</p>
-            <p class="subtitle">Top tile</p>
-          </article>
-          <article class="tile is-child notification is-warning">
-            <p class="title">...tiles</p>
-            <p class="subtitle">Bottom tile</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child notification is-info">
-            <p class="title">Middle tile</p>
-            <p class="subtitle">With an image</p>
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/640x480.png">
-            </figure>
-          </article>
-        </div>
+    <div class="tile is-parent wd-left">
+      <div class="tile is-child notification is-link has-text-centered special">
+        <h1 class="title">Reference Number</h1>
+        <p class="round-border">89379283923822390</p>
+        <p class="wd-top-extra is-spaced title is-3 has-text-centered has-text-white-bis">Address</p>
+        <p class="wd-top-extra subtitle is-4 is-spaced has-text-centered has-text-white-bis">{{aadhar.address}}</p>
       </div>
     </div>
+
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification purple special">
+          <img src="../../assets/images/phone.jpg" class="card-img">
+          <p class="wd-top card-key has-text-centered has-text-white-bis">Phone Number</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.mobile_num}}</p>
+        </article>
+
+        <article class="tile is-child notification orange special">
+          <img src="../../assets/images/aadhaar-1.jpg" class="card-img">
+          <p class="wd-top card-key has-text-centered has-text-white-bis">Aadhar Number</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.aadhar_num}}</p>
+        </article>
+      </div>
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification green special">
+          <img src="../../assets/images/age.png" class="card-img">
+          <p class="wd-top card-key has-text-centered has-text-white-bis">Age</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.age}}</p>
+        </article>
+        <article class="tile is-child notification red special">
+          <img src="../../assets/images/gender.png" class="card-img">
+          <p class="wd-top card-key has-text-centered has-text-white-bis">Gender</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.gender}}</p>
+        </article>
+      </div>
+    </div>
+
     <div class="tile is-parent wd-right">
-      <article class="tile is-child notification is-success">
-        <div class="content">
-          <p class="title">Tall tile</p>
-          <p class="subtitle">With even more content</p>
-          <div class="content">
-            Hello! Fraands
-          </div>
-        </div>
-      </article>
+      <div class="tile is-child notification is-primary is-bold special">
+        <img src="../../assets/images/profile-2.png" class="card-img-large">
+        <p class="wd-top title is-3 has-text-centered has-text-white-bis">Name</p>
+        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis">{{aadhar.name}}</p>
+        <p class="title is-3 has-text-centered has-text-white-bis">Constituency</p>
+        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis">Vadodara</p>
+        <p class="title is-3 has-text-centered has-text-white-bis">Pincode</p>
+        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis">{{aadhar.pincode}}</p>
+      </div>
     </div>
   </div>
 </div>
