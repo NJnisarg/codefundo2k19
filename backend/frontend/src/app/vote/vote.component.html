@@ -1,12 +1,24 @@
 <app-background></app-background>
 
-<div class="category-list events-listing row active azuki">
-  <div class="col s12 m4" *ngFor="let item of categories">
-    <a  (click)="vote(item)" class="events-listing-item" >
-      <div class="image" [ngStyle]="{ 'background-image': 'url('+ domain + item.party_symbol + ')'}"></div>
-      <div class="title">{{ item.party }}</div>
-    </a>
+<div *ngIf="!decisionHelper">
+  <div class="category-list events-listing row active azuki">
+    <div class="col s12 m4" *ngFor="let item of categories">
+      <a  (click)="vote(item)" class="events-listing-item" >
+        <div class="image" [ngStyle]="{ 'background-image': 'url('+ domain + item.party_symbol + ')'}"></div>
+        <div class="title">{{ item.party }}</div>
+      </a>
+    </div>
   </div>
 </div>
 
+<div *ngIf="decisionHelper">
+    <div class="category-list events-listing row active azuki" style="width:80%">
+        <div  *ngFor="let item of categories">
+          <a  (click)="vote(item)" class="events-listing-item" >
+            <div class="image" [ngStyle]="{ 'background-image': 'url('+ domain + item.party_symbol + ')'}"></div>
+            <div class="title">{{ item.party }}</div>
+          </a>
+        </div>
+      </div>
+</div>  
 

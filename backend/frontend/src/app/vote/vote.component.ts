@@ -1,6 +1,6 @@
 declare var require: any
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { VoteService } from '../_service/vote.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../environments/environment'
@@ -22,6 +22,7 @@ export class VoteComponent implements OnInit {
   public domain = this.env['apiUrl'];
   public candidateId;
   public voterId;
+  @Input() decisionHelper = false;
   constructor(public voteService:VoteService,public router:Router) { }
 
   public getPartyCandidates(){
@@ -45,6 +46,7 @@ export class VoteComponent implements OnInit {
     this.userId = localStorage.getItem("userId");
     this.electionId = localStorage.getItem("electionId");
     this.getPartyCandidates(); 
+    console.log(this.decisionHelper);
   }
 
 }
