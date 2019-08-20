@@ -63,6 +63,7 @@ export class VoteComponent implements OnInit {
         this.router.navigateByUrl("/dashboard");
       },
       (error)=>{
+        console.log(error);
         new Noty({
           type: 'error',
           layout: 'topRight',
