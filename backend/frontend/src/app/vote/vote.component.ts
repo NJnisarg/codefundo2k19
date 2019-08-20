@@ -1,4 +1,4 @@
-declare var require: any
+
 
 import { Component, OnInit,Input } from '@angular/core';
 import { VoteService } from '../_service/vote.service';
@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../environments/environment'
 import { W3Service } from '../_service/w3.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import * as Noty from 'noty';
+
 
 @Component({
   selector: 'app-vote',
@@ -36,15 +38,48 @@ export class VoteComponent implements OnInit {
   }
 
   public vote(candidate){
+    console.log("vote")
     this.candidateKey = candidate.aadhar_num;
     this.voterKey = this.userKey;
     // let added = addVoter(this.voterId);
     // console.log(added);
     this.w3Service.vote(this.voterKey,this.candidateKey).subscribe(
-      res=>{
+      (res)=>{
         console.log(res);
+        new Noty({
+          type: 'success',
+          layout: 'topRight',
+          theme: 'metroui',
+          closeWith: ['click'],
+          text: 'The script is sucessfully created!',
+          animation: {
+            open: 'animated fadeInRight',
+            close: 'animated fadeOutRight'
+          },
+          timeout: 4000,
+          killer: true
+        }).show();
+
+        this.router.navigateByUrl("/dashboard");
+      },
+      (error)=>{
+        new Noty({
+          type: 'error',
+          layout: 'topRight',
+          theme: 'metroui',
+          closeWith: ['click'],
+          text: 'Woops! There seems to be an error.',
+          animation: {
+            open: 'animated fadeInRight',
+            close: 'animated fadeOutRight'
+          },
+          timeout: 4000,
+          killer: true
+        }).show();
       }
     )
+
+
   }
 
 

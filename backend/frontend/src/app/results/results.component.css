@@ -114,6 +114,13 @@ body {
     min-height: calc( 0.5625 * (100vw - 2*9vw) * (4/12) );
 }
 
+.rank {
+    position: relative;
+    margin-top: 12px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
 @media only screen and (max-width: 1400px) {
 
 .back-link {

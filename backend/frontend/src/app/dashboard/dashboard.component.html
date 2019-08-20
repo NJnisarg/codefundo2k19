@@ -1,15 +1,17 @@
 <ngx-ui-loader></ngx-ui-loader>
+<app-background></app-background>
+
 <div ngxUiLoaderBlurred>
-  <section class="hero has-background-grey-lighter">
+  <section class="hero ">
     <div class="hero-body">
       <div class="is-fluid">
-        <h1 class="title">
+        <h1 class="title azuki" style="font-size:3.5em;color: black;margin-top:16px">
           Secure Electronic Voting using Azure Blockchain
         </h1>
       </div>
     </div>
   </section>
-  <div class="columns has-background-grey-lighter">
+  <!-- <div class="columns ">
     <div class="column wd-left">
       <section class="hero has-background-white special">
         <div class="hero-body">
@@ -38,59 +40,69 @@
         </div>
       </section>
     </div>
-  </div>
+  </div> -->
 
-  <div class="tile is-ancestor has-background-grey-lighter">
+  <div class="tile is-ancestor " style="margin-top:15px">
     <div class="tile is-parent wd-left">
-      <div class="tile is-child notification is-link has-text-centered special">
-        <h1 class="title">Reference Number</h1>
-        <p class="round-border">{{userKey}}</p>
-        <p class="wd-top-extra is-spaced title is-3 has-text-centered has-text-white-bis">Address</p>
-        <p class="wd-top-extra subtitle is-4 is-spaced has-text-centered has-text-white-bis">{{aadhar.address}}</p>
+      <div class="tile is-child notification  has-text-centered leftPerpule special">
+        <div style="margin-top:40px">
+        <h1 class="title has-text-white-bis nunito">Reference Number</h1>
+        <p class="round-border has-text-white-bis">{{userKey}}</p><br><br>
+
+        <a class="round-border has-text-white-bis"  routerLink="/elections/upcoming" style="text-decoration:none;padding:20px;display:inline-block; margin-bottom: 10px" >upcoming elections</a><br>
+      
+        <a class="round-border has-text-white-bis"  routerLink="/elections/past" style="text-decoration:none;padding:20px;display:inline-block;margin-top: 30px" >Past elections</a><br>
+        <br><br>
+
+        <p class="wd-top-extra is-spaced title is-3 has-text-centered has-text-white-bis nunito">Address</p>
+        <p class="wd-top-extra subtitle is-4 is-spaced has-text-centered has-text-white-bis nunito">{{aadhar.address}}</p>
+        </div>
       </div>
     </div>
 
     <div class="tile">
       <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification purple special">
+        <article class="tile is-child notification purplee special">
           <img src="../../assets/images/phone.jpg" class="card-img">
-          <p class="wd-top card-key has-text-centered has-text-white-bis">Phone Number</p>
+          <p class="wd-top card-key has-text-centered has-text-white-bis nunito">Phone Number</p>
           <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.mobile_num}}</p>
         </article>
 
         <article class="tile is-child notification orange special">
           <img src="../../assets/images/aadhaar-1.jpg" class="card-img">
-          <p class="wd-top card-key has-text-centered has-text-white-bis">Aadhar Number</p>
-          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.aadhar_num}}</p>
+          <p class="wd-top card-key has-text-centered has-text-white-bis nunito">Aadhar</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis nunito">{{aadhar.aadhar_num}}</p>
         </article>
       </div>
       <div class="tile is-parent is-vertical">
-        <article class="tile is-child notification green special">
+        <article class="tile is-child notification greene special">
           <img src="../../assets/images/age.png" class="card-img">
-          <p class="wd-top card-key has-text-centered has-text-white-bis">Age</p>
-          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.age}}</p>
+          <p class="wd-top card-key has-text-centered has-text-white-bis nunito">Age</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis nunito">{{aadhar.age}}</p>
         </article>
         <article class="tile is-child notification red special">
           <img src="../../assets/images/gender.png" class="card-img">
-          <p class="wd-top card-key has-text-centered has-text-white-bis">Gender</p>
-          <p class="wd-top card-value has-text-centered has-text-white-bis">{{aadhar.gender}}</p>
+          <p class="wd-top card-key has-text-centered has-text-white-bis nunito">Gender</p>
+          <p class="wd-top card-value has-text-centered has-text-white-bis nunito">{{aadhar.gender}}</p>
         </article>
       </div>
     </div>
 
     <div class="tile is-parent wd-right">
-      <div class="tile is-child notification is-primary is-bold special">
-        <img src="../../assets/images/profile-2.png" class="card-img-large">
-        <p class="wd-top title is-3 has-text-centered has-text-white-bis">Name</p>
-        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis">{{aadhar.name}}</p>
-        <p class="title is-3 has-text-centered has-text-white-bis">Constituency</p>
-        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis">Vadodara</p>
-        <p class="title is-3 has-text-centered has-text-white-bis">Pincode</p>
-        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis">{{aadhar.pincode}}</p>
+      <div class="tile is-child notification rightPerpule is-bold special">
+        <img src={{domain}}{{aadhar.avatar}} width="250px" height="250px" style="width:250px;height:250px" class="card-img-large">
+        <p class="wd-top title is-3 has-text-centered has-text-white-bis nunito">Name</p>
+        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis nunito">{{aadhar.name}}</p>
+        <p class="title is-3 has-text-centered has-text-white-bis nunito">Constituency</p>
+        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis nunito">Vadodara</p>
+        <p class="title is-3 has-text-centered has-text-white-bis nunito">Pincode</p>
+        <p class="subtitle is-4 is-spaced has-text-centered has-text-white-bis nunito">{{aadhar.pincode}}</p>
       </div>
     </div>
   </div>
 </div>
+
+
 
 <!--<ngx-ui-loader></ngx-ui-loader>
 <div ngxUiLoaderBlurred>
@@ -199,10 +211,8 @@
                                     <div> pincode : {{aadhar.pincode}}</div>
                                     <div> address : {{aadhar.address}}</div>
                                     <div> aadhar no : {{aadhar.aadhar_num}}</div>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="column is-6">

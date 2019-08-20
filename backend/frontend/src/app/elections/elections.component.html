@@ -1,9 +1,14 @@
 <app-background></app-background>
+<ngx-ui-loader></ngx-ui-loader>
+
+<div ngxUiLoaderBlurred>
+
+
 
 <div style="margin:5em">
 
 <div *ngIf="upcomingOrpast=='upcoming'">
-<div class="title has-margin-5 azuki" style="font-size:5em; color:black"> Upcoming Election</div>
+  <div class="title has-margin-5 azuki" style="font-size:5em; color:black"> Upcoming Election</div>
 </div>
 
 <div *ngIf="upcomingOrpast=='past'">
@@ -21,9 +26,15 @@
           
            <div class="title azuki" style="color:black;font-size: 5em">{{election.name}}</div>
           <div class="azuki" style="color:black;font-size: 2em">{{election.description}}</div><br>
-          <a class="mbtn white-text" style="background:black" (click)="onSelectElectionId(election.id)"  target="_blank" style="font-size:1.5em">parties available to vote</a><br><br><br>
+          <a class="mbtn white-text" style="background:black" (click)="onSelectElectionId(election.id)"   style="font-size:1.5em;display: inline-block">parties available to vote</a><br>&nbsp;&nbsp;
+          <a class="mbtn white-text" style="background:black" routerLink="/decisionHelper" target="_blank" style="font-size:1.5em;margin-top: 1em">decision helper</a><br><br><br>
+
+          <br><br>
         </div>  
       </div> 
     </div>   
   
+</div>
+
+
 </div>

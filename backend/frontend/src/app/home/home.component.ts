@@ -23,13 +23,16 @@ export class HomeComponent implements OnInit {
   };
   
   public getId(){
+    this.ngxLoader.start();
     this.authService.getAuthenticated(this.mobNo).subscribe(
       res=>{
         res = JSON.parse(stringify(res));
         this.userId = res["id"];
         localStorage.setItem("userId", this.userId);
         this.router.navigateByUrl("/dashboard");
+        this.ngxLoader.stop();
       }
+      
     )
   }
 

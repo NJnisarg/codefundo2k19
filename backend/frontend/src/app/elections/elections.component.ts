@@ -1,34 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ElectionsDetailService } from '../_service/elections-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
-var RTIdata = [
-  {
-    title:" Education ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
-  },
-  {
-    title:" Health ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
-  },
-  {
-    title:" Roads ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
-  },
-  {
-    title:" Criminal charges ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
-  },
-  {
-    title:" Salary ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
-  }
-]
 
 @Component({
   selector: 'app-elections',
@@ -40,24 +15,29 @@ export class ElectionsComponent implements OnInit {
   public elections;
   public userId;
   public upcomingOrpast;
-  public rtiData;
-  constructor(public electionsService:ElectionsDetailService,private route: ActivatedRoute,public router:Router) { }
+  public env = environment;
+  public domain = this.env['apiUrl'];
+  constructor(public electionsService:ElectionsDetailService,private route: ActivatedRoute,public router:Router,private ngxLoader: NgxUiLoaderService) { }
 
   public getUpcomingElections(){
+    this.ngxLoader.start();
     this.electionsService.getUpComingElections(this.userId).subscribe(
       res=>{
         console.log(res);
         console.log("upcoming here")
         this.elections = res;
+        this.ngxLoader.stop();
       }
     )
   }
 
   public getPastElections(){
+    this.ngxLoader.start();
     this.electionsService.getPastElections(this.userId).subscribe(
       res=>{
         console.log(res);
         this.elections = res;
+        this.ngxLoader.stop();
       }
     )
   }
@@ -83,7 +63,7 @@ export class ElectionsComponent implements OnInit {
       this.getPastElections();
     }
     
-    this.rtiData = RTIdata;
+  
     
   }
 

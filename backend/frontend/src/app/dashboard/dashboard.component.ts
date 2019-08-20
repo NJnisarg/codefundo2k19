@@ -5,6 +5,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import {vote} from '../../../../../blockchain/w3/addEntities';
 import { W3Service } from '../_service/w3.service';
+import { environment } from '../../environments/environment'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +18,9 @@ export class DashboardComponent implements OnInit {
   public userKey;
   public userAadharNum;
   public randNum;
+  public env = environment;
+  public domain = this.env['apiUrl'];
+  
   constructor(private route: ActivatedRoute,public aadharService:AadharService,private ngxLoader: NgxUiLoaderService,public w3Service:W3Service) { }
 
   public addVoter(userKey){
