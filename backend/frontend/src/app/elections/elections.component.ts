@@ -24,7 +24,8 @@ export class ElectionsComponent implements OnInit {
     this.electionsService.getUpComingElections(this.userId).subscribe(
       res=>{
         console.log(res);
-        console.log("upcoming here")
+        console.log("upcoming here");
+        console.log(res.start_date);
         this.elections = res;
         this.ngxLoader.stop();
       }
@@ -62,9 +63,6 @@ export class ElectionsComponent implements OnInit {
     else{
       this.getPastElections();
     }
-    
-  
-    
-  }
 
+  }
 }

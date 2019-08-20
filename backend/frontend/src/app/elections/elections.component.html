@@ -3,7 +3,23 @@
 
 <div ngxUiLoaderBlurred>
 
+  <script>
+      let x = setInterval(function () {
+          let startDate = new Date(election.start_date).getTime();
+          let currentTime = new Date().getTime();
+          let distance = startDate - currentTime;
+          console.log(distance);
+          let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+          document.getElementById("time").innerHTML = days+"d "+hours+"h "+minutes+"m "+seconds + "s ";
+          console.log(days+"d "+hours+"h "+minutes+"m "+seconds + "s ")
+      }, 1000);
+
+      console.log('Aee Manan');
+  </script>
 
 <div style="margin:5em">
 
@@ -19,22 +35,20 @@
 
 <div style="margin-top:5em">
 
- 
+
     <div>
       <div class="white-text">
         <div *ngFor="let election of elections">
-          
-           <div class="title azuki" style="color:black;font-size: 5em">{{election.name}}</div>
+
+          <div class="title azuki" style="color:black;font-size: 4em">{{election.name}}</div>
           <div class="azuki" style="color:black;font-size: 2em">{{election.description}}</div><br>
-          <a class="mbtn white-text" style="background:black" (click)="onSelectElectionId(election.id)"   style="font-size:1.5em;display: inline-block">parties available to vote</a><br>&nbsp;&nbsp;
-          <a class="mbtn white-text" style="background:black" routerLink="/decisionHelper" target="_blank" style="font-size:1.5em;margin-top: 1em">decision helper</a><br><br><br>
+          <a class="mbtn" (click)="onSelectElectionId(election.id)" >parties available to vote</a>
+          <a class="mbtn" routerLink="/decisionHelper" target="_blank" style="margin-left: 1em">decision helper</a>
+          <div id="time" class="time-left" style="margin-left: 1em">Starts on : {{x()}}</div><br><br><br>
+        </div>
+      </div>
+    </div>
 
-          <br><br>
-        </div>  
-      </div> 
-    </div>   
-  
 </div>
-
-
+</div>
 </div>
