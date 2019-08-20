@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+/* @import "~angular-vertical-timeline/dist/vertical-timeline.css"; */
+
 .azuki {
     font-family: 'Azuki', sans-serif;
 }
@@ -9,10 +13,6 @@
 .azure-white {
     background-color: rgba(220, 243, 238, 0.78);
 }
-
-@import url('https://fonts.googleapis.com/css?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-/* @import "~angular-vertical-timeline/dist/vertical-timeline.css"; */
 
 @font-face {
     font-family: 'Azuki';
@@ -123,8 +123,8 @@ body {
     background: black;
     border: 1px solid black;
     padding: 16px 32px 16px 32px;
-    font-size: 1em;
-    color: black;
+    font-size: 1.5em;
+    color: white;
     border-radius: 32px;
     cursor: pointer;
     font-family: 'Azuki', sans-serif;
@@ -132,13 +132,26 @@ body {
 
 .mbtn.mbtn-white {
     border: 1px solid white;
-    color: white;
 }
 
 .mbtn:hover {
-    background: black;
-    color: white;
+  color: black;
+  background: white;
+  border: 1px solid black;
+  border-radius: 32px;
 }
+
+.time-left {
+  display: inline-block;
+  background: black;
+  border: 1px solid black;
+  padding: 16px 32px 16px 32px;
+  font-size: 1.5em;
+  color: white;
+  border-radius: 32px;
+  font-family: 'Azuki', sans-serif;
+}
+
 .white-text{
     color:white;
 }
@@ -274,7 +287,7 @@ body {
     cursor: pointer;
     font-size: 1.5em;
     transition: opacity 300ms ease-out;
-    -webkit-user-select: none; /* Safari */        
+    -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
