@@ -26,7 +26,7 @@ constituencies.map((con, i) => {
 });
 
 // Inserting into election (id, name, description, start_date, end_date)
-dbconn.query('replace into backend_election values (?,?,?,?,?)', [1,elections[0], 'This is the upcoming election for the largest democracy in the world. The lok sabha election is the general election where the Indian democracy chooses its next ruling party.', '2019-08-20','2019-08-25']);
+dbconn.query('replace into backend_election values (?,?,?,?,?)', [1,elections[0], 'This is the upcoming election for the largest democracy in the world. The lok sabha election is the general election where the Indian democracy chooses its next ruling party.', '2019-08-24','2019-08-28']);
 dbconn.query('replace into backend_election values (?,?,?,?,?)', [2,elections[1], 'This is the election of the state of gujarat. The vidhan sabha election is the election where the public of Gujarat state chooses its next ruling party.', '2018-08-20','2018-08-25']);
 
 // Inserting into party (id, name)
