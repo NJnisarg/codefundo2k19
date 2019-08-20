@@ -2,7 +2,7 @@
 <ngx-ui-loader></ngx-ui-loader>
 
 <div ngxUiLoaderBlurred>
-
+<!-- 
   <script>
       let x = setInterval(function () {
           let startDate = new Date(election.start_date).getTime();
@@ -19,7 +19,7 @@
       }, 1000);
 
       console.log('Aee Manan');
-  </script>
+  </script> -->
 
 <div style="margin:5em">
 
@@ -44,7 +44,7 @@
           <div class="azuki" style="color:black;font-size: 2em">{{election.description}}</div><br>
           <a class="mbtn" (click)="onSelectElectionId(election.id)" >parties available to vote</a>
           <a class="mbtn" routerLink="/decisionHelper" target="_blank" style="margin-left: 1em">decision helper</a>
-          <div id="time" class="time-left" style="margin-left: 1em">Starts on : {{x()}}</div><br><br><br>
+          <div id="time" class="time-left" style="margin-left: 1em">Time Left : {{time}}</div><br><br><br>
         </div>
       </div>
     </div>
