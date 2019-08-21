@@ -24,7 +24,10 @@ SECRET_KEY = 'nug$q6%vh97g83o0b%k)m)h+)m)akff@&=1dk9s32po!og5*=v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+	'codefundodjangobackend.azurewebsites.net',
+	'localhost',
+]
 
 # Application definition
 
