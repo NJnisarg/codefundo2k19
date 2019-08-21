@@ -4,7 +4,7 @@ const VotingContractArtifact = require('../build/contracts/Voting.json');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const rpc_endpoint = 'http://ethdnxd24-dns-reg1.eastus.cloudapp.azure.com:8540';
 const fs = require('fs');
-const mnemonic = fs.readFileSync("../metamask_wallet.txt").toString().trim();
+const mnemonic = fs.readFileSync('metamask_wallet.txt').toString().trim();
 
 const contractABI = VotingContractArtifact["abi"];
 const contractAddress = VotingContractArtifact["networks"]["10101010"]["address"];
