@@ -6,8 +6,16 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from datetime import date
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt 
+def index(request):
+    print("manan")
+    return render(request, 'codefundo/index.html')
 
 # Create your views here.
+# @csrf_exempt 
 class AuthAPI(APIView):
 
 	def get_object(self, mobile_num):
@@ -24,7 +32,7 @@ class AuthAPI(APIView):
 		serialized_user = json.dumps({'id': user.id})
 		return Response(serialized_user, status=status.HTTP_200_OK)
 
-
+# @csrf_exempt 
 class GetAadharAPI(APIView):
 
     def get_object(self, pk):
@@ -50,7 +58,7 @@ class GetAadharAPI(APIView):
         serialized_user = AadharDetailSerializer(user)
         return Response(serialized_user.data, status=status.HTTP_200_OK)
 
-
+# @csrf_exempt 
 class GetAllUpcomingElectionAPI(APIView):
 
     def get(self, request):
@@ -75,7 +83,7 @@ class GetAllUpcomingElectionAPI(APIView):
         serialized_elections = ElectionSerializer(new_elections, many=True)
         return Response(serialized_elections.data, status=status.HTTP_200_OK)
 
-
+# @csrf_exempt 
 class GetAllPastElectionAPI(APIView):
 
     def get(self, request):
@@ -100,7 +108,7 @@ class GetAllPastElectionAPI(APIView):
             serialized_elections = ElectionSerializer(new_elections, many=True)
             return Response(serialized_elections.data, status=status.HTTP_200_OK)
 
-
+# @csrf_exempt 
 class GetAllCandidateByElectionAPI(APIView):
 
     def get(self, request):
@@ -140,7 +148,7 @@ class GetAllCandidateByElectionAPI(APIView):
 
         return Response(election_dict, status=status.HTTP_200_OK)
 
-
+# @csrf_exempt 
 class GetAllContestingCandidatesOfUserConstituency(APIView):
 
     def post(self, request):

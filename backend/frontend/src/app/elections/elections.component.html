@@ -38,14 +38,28 @@
 
     <div>
       <div class="white-text">
-        <div *ngFor="let election of elections">
 
-          <div class="title azuki" style="color:black;font-size: 4em">{{election.name}}</div>
-          <div class="azuki" style="color:black;font-size: 2em">{{election.description}}</div><br>
-          <a class="mbtn" (click)="onSelectElectionId(election.id)" >parties available to vote</a>
-          <a class="mbtn" routerLink="/decisionHelper" target="_blank" style="margin-left: 1em">decision helper</a>
-          <div id="time" class="time-left" style="margin-left: 1em">Time Left : {{time}}</div><br><br><br>
+        <div *ngIf="upcomingOrpast=='upcoming'">
+          <div *ngFor="let election of elections">
+
+            <div class="title azuki" style="color:black;font-size: 4em">{{election.name}}</div>
+            <div class="azuki" style="color:black;font-size: 2em">{{election.description}}</div><br>
+            <a class="mbtn" (click)="onSelectElectionId(election.id)" >parties available to vote</a>
+            <a class="mbtn" routerLink="/decisionHelper" target="_blank" style="margin-left: 1em">decision helper</a>
+            <div id="time" class="time-left" style="margin-left: 1em">Time Left : {{time}}</div><br><br><br>
+          </div>
         </div>
+
+        <div *ngIf="upcomingOrpast=='past'">
+           
+  
+              <div class="title azuki" style="color:black;font-size: 4em">Lok Sabha Elections 2019</div>
+              <div class="azuki" style="color:black;font-size: 2em">This is the upcoming election for the largest democracy in the world. The lok sabha election is the general election where the Indian democracy chooses its next ruling party.</div><br>
+              <a class="mbtn" routerLink="/results" style="margin-left: 1em">See Results</a>
+             
+           
+        </div>
+
       </div>
     </div>
 

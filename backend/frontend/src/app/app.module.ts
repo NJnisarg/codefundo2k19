@@ -14,6 +14,7 @@ import { VoteComponent } from './vote/vote.component';
 import { ResultsComponent } from './results/results.component';
 import { BackgroundComponent } from './background/background.component';
 import { DecisionHelperComponent } from './decision-helper/decision-helper.component';
+
   @NgModule({
   declarations: [
     AppComponent,

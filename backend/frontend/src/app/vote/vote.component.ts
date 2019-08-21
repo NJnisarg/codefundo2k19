@@ -9,6 +9,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import * as Noty from 'noty';
 
 
+
 @Component({
   selector: 'app-vote',
   templateUrl: './vote.component.html',
@@ -43,6 +44,7 @@ export class VoteComponent implements OnInit {
     this.voterKey = this.userKey;
     // let added = addVoter(this.voterId);
     // console.log(added);
+    this.ngxLoader.start();
     this.w3Service.vote(this.voterKey,this.candidateKey).subscribe(
       (res)=>{
         console.log(res);
@@ -51,7 +53,7 @@ export class VoteComponent implements OnInit {
           layout: 'topRight',
           theme: 'metroui',
           closeWith: ['click'],
-          text: 'The script is sucessfully created!',
+          text: 'You have successfully Voted! You are definitely a responsible citizen of India, proud of you!',
           animation: {
             open: 'animated fadeInRight',
             close: 'animated fadeOutRight'
@@ -59,7 +61,7 @@ export class VoteComponent implements OnInit {
           timeout: 4000,
           killer: true
         }).show();
-
+        this.ngxLoader.stop();
         this.router.navigateByUrl("/dashboard");
       },
       (error)=>{

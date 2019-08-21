@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl:'http://localhost:8000',
-  apiUrlW3:'http://localhost:3000'
+  apiUrlW3:'http://localhost:3000',
+  staticDomain:'http://localhost:8000'
 };
 
 /*

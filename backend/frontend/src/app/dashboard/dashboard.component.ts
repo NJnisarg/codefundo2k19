@@ -20,7 +20,12 @@ export class DashboardComponent implements OnInit {
   public randNum;
   public env = environment;
   public domain = this.env['apiUrl'];
-  
+  public staticDomain;
+  public staticPhone='media/assets/images/phone.jpg';
+  public staticAge ='media/assets/images/age.png';
+  public staticAadhar ='media/assets/images/aadhaar-1.jpg';
+  public staticGender ='media/assets/images/gender.png';
+
   constructor(private route: ActivatedRoute,public aadharService:AadharService,private ngxLoader: NgxUiLoaderService,public w3Service:W3Service) { }
 
   public addVoter(userKey){
@@ -69,7 +74,7 @@ export class DashboardComponent implements OnInit {
     console.log(this.userId);
     
     this.getAadharDetails();
-    
+    this.staticDomain=localStorage.getItem("staticDomain");
 
   }
 

@@ -7,28 +7,28 @@ import * as $ from 'jquery';
 var RTIdata = [
   {
     title:" Education ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
+    desc:"Know what this candidate has done for your constituency in the field of education in the past tenure",
+    link:" https://sscer.org/MATTER/RTI%20reply%20for%20the%20month%20of%20Dec_2016.pdf"
   },
   {
     title:" Health ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
+    desc:"Know what this candidate has done for your constituency in the field of Health in the past tenure",
+    link:" https://sscer.org/MATTER/RTI%20reply%20for%20the%20month%20of%20Dec_2016.pdf"
   },
   {
     title:" Roads ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
+    desc:" Know what this candidate has done for your constituency in the field of transport in the past tenure",
+    link:" https://sscer.org/MATTER/RTI%20reply%20for%20the%20month%20of%20Dec_2016.pdf"
   },
   {
     title:" Criminal charges ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
+    desc:" Know what this candidate has any criminal charges in the past",
+    link:" https://sscer.org/MATTER/RTI%20reply%20for%20the%20month%20of%20Dec_2016.pdf"
   },
   {
     title:" Salary ",
-    desc:" description of what all is under this tag",
-    link:" link to rti tag"
+    desc:" description of his salary",
+    link:" https://sscer.org/MATTER/RTI%20reply%20for%20the%20month%20of%20Dec_2016.pdf"
   }
 ]
 

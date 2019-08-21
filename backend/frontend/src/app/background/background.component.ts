@@ -7,7 +7,8 @@ import * as $ from 'jquery';
   styleUrls: ['./background.component.css']
 })
 export class BackgroundComponent implements OnInit {
-
+  public staticDomain;
+  public staticBackground = '/media/assets/images/bg-grayscale.jpg';
   constructor() { }
 
   ngOnInit() {
@@ -19,6 +20,7 @@ export class BackgroundComponent implements OnInit {
       // Safari doesn't support fixed background images, remove the image.
       $('.background-image').css({ background: '#D3D3D3'});
     }
+    this.staticDomain = localStorage.getItem("staticDomain");
   }
 
 }
