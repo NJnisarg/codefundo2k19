@@ -7,7 +7,7 @@ const { addVoter, addCandidate } = require('./w3/addEntities');
 const { vote, getVoteCount,getCandidates, getVoters, reset } = require('./w3/vote');
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 
 //  Use this mobile number for userId = 10 ==> Nikita Joshi. She is a part of the Vadodara constituency
