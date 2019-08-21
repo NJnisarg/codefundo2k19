@@ -7,7 +7,7 @@ const { addVoter, addCandidate } = require('./w3/addEntities');
 const { vote, getVoteCount,getCandidates, getVoters, reset } = require('./w3/vote');
 
 const app = express();
-const port = 80;
+const port = 8000;
 
 
 //  Use this mobile number for userId = 10 ==> Nikita Joshi. She is a part of the Vadodara constituency
@@ -114,4 +114,4 @@ app.post('/reset', async (req, res) => {
 });
 
 
-app.listen(port, () => console.log(`Blockchain App listening on port ${port}!`));
+app.listen(process.env.PORT || port, () => console.log(`Blockchain App listening on port ${port}!`));
