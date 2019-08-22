@@ -68,7 +68,7 @@ app.post('/vote',async (req, res) => {
 
 app.post('/getVoteCount',async (req, res) => {
 
-    axios.post('http://localhost:8000/getAllContestingCandidatesOfUserConstituency/', req.body)
+    axios.post('http://codefundodjangobackend.azurewebsites.net/getAllContestingCandidatesOfUserConstituency/', req.body)
         .then((response) => {
             let result_array = [];
             let count =0;
